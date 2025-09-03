@@ -30,7 +30,7 @@ export function ThemeProvider({
   children,
   defaultTheme = "system",
   defaultFont = "geist",
-  storageKey = "vite-ui-theme",
+  storageKey = "APP_THEME",
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(
@@ -53,10 +53,12 @@ export function ThemeProvider({
         : "light";
 
       root.classList.add(systemTheme);
+      root.style.colorScheme = systemTheme;
       return;
     }
 
     root.classList.add(theme);
+    root.style.colorScheme = theme;
   }, [theme]);
 
   useEffect(() => {

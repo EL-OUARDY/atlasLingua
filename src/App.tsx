@@ -17,7 +17,6 @@ import Favorites from "./components/pages/Favorites";
 import Privacy from "./components/pages/Privacy";
 import Settings from "./components/pages/Settings";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import { APP_NAME } from "@/shared/constants";
 import ProfileSettings from "./components/pages/settings/ProfileSettings";
 import AppearanceSettings from "./components/pages/settings/AppearanceSettings";
 import NotificationSettings from "./components/pages/settings/NotificationSettings";
@@ -36,7 +35,7 @@ function App() {
   return (
     <>
       <UserProvider>
-        <ThemeProvider defaultTheme="system" storageKey={APP_NAME + "-theme"}>
+        <ThemeProvider defaultTheme="system">
           <ShareLinkProvider>
             <Routes>
               {/* main routes */}
