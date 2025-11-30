@@ -35,7 +35,7 @@ function MobileSideBar() {
             Browse application menu
           </SheetDescription>
         </SheetHeader>
-        <ScrollArea className="h-screen">
+        <ScrollArea className="h-dvh">
           <nav className="grid gap-6 p-6 text-lg font-medium">
             <Link
               to="#"

@@ -26,7 +26,7 @@ interface Props {
 
 function AuthLayout({ children, role, description }: Props) {
   return (
-    <div className="relative flex h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
+    <div className="relative flex h-dvh flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
       {(role == "signup" || role == "forgot-password") && (
         <Link
           to={ROUTES.login}
@@ -59,7 +59,7 @@ function AuthLayout({ children, role, description }: Props) {
         <Logo className="mr-1 size-4" />
         {APP_NAME}
       </Link>
-      <div className="hidden h-screen flex-col bg-background p-10 dark:border-r dark:bg-muted lg:flex">
+      <div className="hidden h-dvh flex-col bg-background p-10 dark:border-r dark:bg-muted lg:flex">
         <Link
           to={ROUTES.home}
           className="flex items-center text-lg font-medium"

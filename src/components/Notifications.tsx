@@ -77,7 +77,7 @@ function Notifications() {
                   <div className="text-center">
                     <div className="text-lg font-bold">No Notifications</div>
                     <div className="text-sm text-muted-foreground">
-                      Silence is gold!
+                      Silence is golden!
                     </div>
                   </div>
                 </div>
