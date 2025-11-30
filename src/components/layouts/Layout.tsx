@@ -28,9 +28,9 @@ function Layout() {
         <NotificationProvider>
           <SideBar />
           <ScrollArea className="h-dvh w-dvw overflow-auto">
-            <section className="flex h-dvh flex-1 flex-col overflow-auto md:gap-4 md:py-4">
+            <section className="flex h-dvh min-h-[667px] flex-1 flex-col overflow-auto md:gap-4 md:py-4">
               <Header />
-              <main className="flex h-full flex-1 flex-grow flex-col gap-4 overflow-auto pb-14 md:gap-6 md:p-4 md:px-6 md:py-0 landscape:min-h-[500px]">
+              <main className="mt-14 flex h-full flex-1 flex-grow flex-col gap-4 overflow-auto pb-14 md:mt-0 md:gap-6 md:p-4 md:px-6 md:py-0 landscape:min-h-[500px]">
                 <ScrollArea ref={scrollAreaRef} className="flex-1">
                   <Outlet />
                 </ScrollArea>
