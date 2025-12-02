@@ -8,11 +8,9 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Link } from "react-router-dom";
 import { APP_INFO, APP_NAME, FEATURES, GET_STARTED } from "@/shared/constants";
-import { ROUTES } from "@/routes/routes";
 import Logo from "./ui/icons/Logo";
 
 interface Props {
@@ -69,14 +67,6 @@ function MainMenu(props: Props) {
               ))}
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link
-            to={ROUTES.contact}
-            className={`bg-background ${navigationMenuTriggerStyle()}`}
-          >
-            Support
-          </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
