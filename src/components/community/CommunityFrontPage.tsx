@@ -31,7 +31,7 @@ function CommunityFrontPage({ isPage = false, className }: Props) {
           <Separator className="mb-2 mt-6 hidden sm:block" />
         </div>
 
-        <div className="grid-cols-auto-fill-350 grid gap-4">
+        <div className="grid gap-4 sm:grid-cols-auto-fill-350">
           <Link
             to={ROUTES.community + "?new_post=true"}
             className="flex items-start overflow-hidden rounded-lg bg-background p-4"

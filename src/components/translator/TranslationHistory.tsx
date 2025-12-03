@@ -76,7 +76,7 @@ function TranslationHistory() {
               <div className="flex size-full items-center justify-center text-center">
                 <div className="flex flex-col gap-4">
                   <p className="">
-                    Please log in to maintain a record <br /> of your activity.
+                    Please log in to maintain a <br /> record of your activity.
                   </p>
                   <Link
                     className={cn(

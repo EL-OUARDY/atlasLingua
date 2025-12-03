@@ -91,6 +91,7 @@ function TranslateText() {
       const history: IHistory = location.state.history;
 
       showTranslation(history);
+      setFavoriteId(undefined);
 
       location.state.history = null; // clear the history state
     }
