@@ -26,13 +26,16 @@ interface Props {
 
 function AuthLayout({ children, role, description }: Props) {
   return (
-    <div className="relative flex h-dvh flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
+    <div
+      id="auth-layout"
+      className="relative flex h-dvh min-h-[667px] flex-col items-center justify-center md:grid lg:min-h-dvh lg:max-w-none lg:grid-cols-2 lg:px-0"
+    >
       {(role == "signup" || role == "forgot-password") && (
         <Link
           to={ROUTES.login}
           className={cn(
             buttonVariants({ variant: "ghost" }),
-            "absolute right-4 top-4 md:right-8 md:top-8",
+            "fixed right-4 top-4 bg-background md:right-8 md:top-8",
           )}
         >
           Login
@@ -43,7 +46,7 @@ function AuthLayout({ children, role, description }: Props) {
           to={ROUTES.signup}
           className={cn(
             buttonVariants({ variant: "ghost" }),
-            "absolute right-4 top-4 md:right-8 md:top-8",
+            "fixed right-4 top-4 bg-background md:right-8 md:top-8",
           )}
         >
           Sign up
@@ -53,13 +56,14 @@ function AuthLayout({ children, role, description }: Props) {
         to={ROUTES.home}
         className={cn(
           buttonVariants({ variant: "ghost" }),
-          "font-bg absolute left-4 top-4 flex items-center gap-1 md:left-8 md:top-8 lg:hidden",
+          "font-bg fixed left-4 top-4 flex items-center gap-1 bg-background md:left-8 md:top-8 lg:hidden",
         )}
       >
         <Logo className="mr-1 size-4" />
         {APP_NAME}
       </Link>
-      <div className="hidden h-dvh flex-col bg-background p-10 dark:border-r dark:bg-muted lg:flex">
+
+      <div className="hidden min-h-dvh flex-col bg-background p-10 dark:border-r dark:bg-muted lg:flex">
         <Link
           to={ROUTES.home}
           className="flex items-center text-lg font-medium"
@@ -70,13 +74,14 @@ function AuthLayout({ children, role, description }: Props) {
         <div className="flex flex-1 items-center justify-center p-4">
           <img src="img/art.svg" className="size-[300px] object-cover" />
         </div>
-        <div className="z-20 mt-auto rounded-lg shadow-md">
+        <div className="z-20 mt-auto rounded-lg">
           <blockquote className="space-y-2 rounded-lg p-4">
             <p className="text-lg">{description ? description : APP_INFO}</p>
             <footer className="text-sm">@{APP_NAME}</footer>
           </blockquote>
         </div>
       </div>
+
       <div className="w-full lg:p-8">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[450px]">
           {children}
@@ -86,6 +91,7 @@ function AuthLayout({ children, role, description }: Props) {
                 <Button
                   variant="ghost"
                   className="text-muted-foreground hover:bg-transparent"
+                  title="Read More"
                 >
                   <ChevronUp className="size-8 cursor-pointer" />
                 </Button>

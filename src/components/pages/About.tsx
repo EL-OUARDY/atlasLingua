@@ -6,7 +6,7 @@ import Logo from "../ui/icons/Logo";
 function About() {
   return (
     <>
-      <div className="flex-1 p-4 shadow-sm md:rounded-lg md:border md:border-dashed md:p-6">
+      <div className="flex-1 bg-muted/40 p-4 shadow-sm md:rounded-lg md:border md:p-6">
         <div className="flex size-full flex-col items-center gap-4 xl:w-5/6">
           <h2 className="self-start text-2xl font-bold tracking-tight">
             Getting started

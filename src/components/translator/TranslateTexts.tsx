@@ -1,6 +1,8 @@
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { ROUTES } from "@/routes/routes";
 import { Language, Tips } from "@/models/Translator";
-import { useEffect, useMemo, useState } from "react";
-import { Separator } from "../ui/separator";
+import { Separator } from "@/components/ui/separator";
 import {
   ArrowRightLeftIcon,
   Check,
@@ -13,33 +15,30 @@ import {
   ShieldCheck,
   Star,
 } from "lucide-react";
-import { Button } from "../ui/button";
-import MoroccoIcon from "../ui/icons/Morocco";
-import USAIcon from "../ui/icons/USA";
-import { Textarea } from "../ui/textarea";
-import AiIcon from "../ui/icons/Ai";
-import { ScrollArea } from "../ui/scroll-area";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { ROUTES } from "@/routes/routes";
-import WTooltip from "../ui/custom/WTooltip";
+import { Button } from "@/components/ui/button";
+import MoroccoIcon from "@/components/ui/icons/Morocco";
+import USAIcon from "@/components/ui/icons/USA";
+import { Textarea } from "@/components/ui/textarea";
+import AiIcon from "@/components/ui/icons/Ai";
+import WTooltip from "@/components/ui/custom/WTooltip";
 import { useHistory } from "@/contexts/HistoryContext";
-import { Skeleton } from "../ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
+import { CanceledError } from "axios";
+import { cleanText, getRandomElement, isRTL } from "@/lib/utils";
+import { APP_NAME } from "@/shared/constants";
+import { useUser } from "@/contexts/UserContext";
+import TransliterationIcon from "@/components/ui/icons/TransliterationIcon";
+import { useShareLink } from "@/contexts/ShareLinkContext";
+import { toast } from "sonner";
+import VoiceInput from "@/components/VoiceInput";
 import translationService, {
   ITranslationFetchDataRequest,
   ITranslationData,
 } from "@/services/translationService";
-import { CanceledError } from "axios";
-import { toast } from "sonner";
 import { IHistory } from "@/services/historyService";
-import { cleanText, getRandomElement, isRTL } from "@/lib/utils";
-import { APP_NAME } from "@/shared/constants";
 import favoriteService, { IFavorite } from "@/services/favoriteService";
-import ReportDialog from "../ReportDialog";
-import { useUser } from "@/contexts/UserContext";
-import VoiceInput from "../VoiceInput";
-import SpeakText from "../SpeakText";
-import TransliterationIcon from "../ui/icons/TransliterationIcon";
-import { useShareLink } from "@/contexts/ShareLinkContext";
+import SpeakText from "@/components/SpeakText";
+import ReportDialog from "@/components/ReportDialog";
 
 function TranslateText() {
   const [sourceLang, setSourceLang] = useState<Language>("english");
@@ -308,7 +307,7 @@ function TranslateText() {
   }
 
   return (
-    <div className="flex h-full max-h-[800px] flex-col overflow-auto rounded-lg border bg-background dark:bg-transparent">
+    <div className="flex h-full max-h-[800px] w-full flex-col rounded-lg border bg-background dark:bg-transparent">
       <div id="language-switch" className="flex items-center gap-2 px-4 py-2">
         <div className="flex-1">
           <div className="flex items-center gap-1">
@@ -323,7 +322,11 @@ function TranslateText() {
             </h3>
           </div>
         </div>
-        <Button variant={"ghost"} onClick={() => switchTranslation()}>
+        <Button
+          title="Switch language"
+          variant={"ghost"}
+          onClick={() => switchTranslation()}
+        >
           <ArrowRightLeftIcon
             className={`${sourceLang === "english" ? "rotate-180" : ""} size-5 transform text-muted-foreground transition-transform duration-300 ease-in-out`}
           />
@@ -346,9 +349,9 @@ function TranslateText() {
       <div className="flex flex-1 flex-col flex-wrap overflow-hidden lg:flex-row landscape:sm:flex-row">
         <div
           id="source-panel"
-          className="flex h-full flex-1 overflow-auto bg-background p-4 dark:bg-transparent"
+          className="flex h-full flex-1 bg-background p-4 dark:bg-transparent"
         >
-          <div className="relative flex flex-1 flex-col overflow-auto rounded-lg border bg-secondary no-ring focus-within:ring-1 focus-within:ring-ring">
+          <div className="relative flex flex-1 flex-col rounded-lg border bg-secondary no-ring focus-within:ring-1 focus-within:ring-ring">
             <Textarea
               value={textToTranslate}
               onChange={(event) => setTextToTranslate(event.target.value)}
@@ -363,12 +366,14 @@ function TranslateText() {
             <div className="w-full">
               <Separator className="dark:bg-secondary-foreground/10" />
               <div className="flex items-center p-2">
-                <VoiceInput
-                  language={sourceLang}
-                  text={textToTranslate}
-                  handleTranscriptChange={setTextToTranslate}
-                  shouldStopListening={isTranslating}
-                />
+                <Suspense fallback={null}>
+                  <VoiceInput
+                    language={sourceLang}
+                    text={textToTranslate}
+                    handleTranscriptChange={setTextToTranslate}
+                    shouldStopListening={isTranslating}
+                  />
+                </Suspense>
 
                 {isRTL(textToTranslate) && sourceLang === "darija" && (
                   <WTooltip
@@ -457,13 +462,12 @@ function TranslateText() {
         />
         <div
           id="destination-panel"
-          className="flex h-full flex-1 flex-col overflow-auto bg-background p-4 dark:bg-transparent"
+          className="flex h-full flex-1 flex-col bg-background p-4 dark:bg-transparent"
         >
-          <div className="relative flex flex-1 flex-col overflow-auto rounded-lg border bg-secondary no-ring focus-within:ring-1 focus-within:ring-ring">
-            <ScrollArea
-              thumbColor="dark:bg-secondary-foreground/10"
+          <div className="relative flex flex-1 flex-col rounded-lg border bg-secondary no-ring focus-within:ring-1 focus-within:ring-ring">
+            <div
               id="translate-source"
-              className="h-full flex-1 overflow-auto border-0 p-4 text-base text-foreground shadow-none selection:bg-primary selection:text-primary-foreground"
+              className="h-full flex-1 border-0 p-4 text-base text-foreground shadow-none selection:bg-primary selection:text-primary-foreground"
             >
               {isTranslating && (
                 <div className="flex w-full flex-col gap-4">
@@ -546,7 +550,7 @@ function TranslateText() {
                   </div>
                 </div>
               )}
-            </ScrollArea>
+            </div>
 
             {translation[0].translation && (
               <>
@@ -562,6 +566,7 @@ function TranslateText() {
                       variant="ghost"
                       size="icon"
                       className="ml-auto hover:bg-background/60 dark:hover:bg-background/30"
+                      title="Remove from favorites"
                     >
                       <Star className="size-5 fill-orange-600 stroke-orange-500 text-muted-foreground" />
                     </Button>
@@ -570,6 +575,7 @@ function TranslateText() {
                       onClick={addFavorite}
                       variant="ghost"
                       size="icon"
+                      title="Add to favorites"
                       className="ml-auto hover:bg-background/60 dark:hover:bg-background/30"
                     >
                       <Star className="size-5 text-muted-foreground" />

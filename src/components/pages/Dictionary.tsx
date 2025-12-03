@@ -240,7 +240,7 @@ function Dictionary() {
   }, [dataOptions]);
 
   return (
-    <div className="flex h-full flex-col p-4 shadow-sm sm:p-6 md:rounded-lg md:border md:border-dashed">
+    <div className="flex h-full flex-col bg-muted/40 p-4 shadow-sm sm:p-6 md:rounded-lg md:border">
       <div className="">
         <h2 className="text-2xl font-bold tracking-tight">Dictionary</h2>
         <p className="mt-1 text-muted-foreground">

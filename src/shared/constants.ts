@@ -4,9 +4,10 @@ export const APP_NAME = "AtlasLingua";
 export const APP_INFO =
   "Our app offers AI-powered translations, a rich vocabulary dictionary from English to Darija, and plenty of helpful learning materials";
 
-export const APP_EMAIL = "ouadia@elouardy.com";
-export const APP_GITHUB = "https://github.com/EL-OUARDY";
+export const APP_EMAIL = "contact@wadi3.codes";
+export const APP_GITHUB = "https://github.com/EL-OUARDY/atlasLingua";
 export const APP_TWITTER = "https://x.com/_ELOUARDY";
+export const APP_BMC = "https://ko-fi.com/atlaslingua";
 
 export const GET_STARTED: {
   title: string;
@@ -14,22 +15,22 @@ export const GET_STARTED: {
   description: string;
 }[] = [
   {
-    title: "Quick Start Guide",
-    href: "#",
-    description:
-      "Discover how to navigate the app and utilize all of its powerful translation features.",
-  },
-  {
     title: "Our Vision",
     href: "#",
     description:
-      "Create a powerful platform that facilitates accurate and intuitive translation.",
+    "Create a powerful platform that facilitates accurate and intuitive translation.",
+  },
+  {
+    title: "Community",
+    href: ROUTES.community,
+    description:
+      "Connect with fellow learners and Moroccans. Share tips, ask questions, and practice Darija together.",
   },
   {
     title: "Contributions",
     href: ROUTES.contribution,
     description:
-      "We aim to compile a comprehensive dataset and develop sophisticated NLP models.",
+      "We're working to gather a complete language data set and build smarter translation tools, and you can be a part of it!",
   },
 ];
 
@@ -60,7 +61,7 @@ export const FEATURES: {
     title: "Summarization",
     href: ROUTES.translate.summarization,
     description:
-      "Transform lengthy texts, audio and video into concise, actionable insights.",
+      "Transform lengthy texts into concise, actionable insights.",
   },
   {
     title: "Learn",
@@ -69,9 +70,9 @@ export const FEATURES: {
       "Access a vast, well-organized collection of Darija vocabulary.",
   },
   {
-    title: "Live Assistance",
-    href: "#",
+    title: "On-Demand Help (Contact Us)",
+    href: ROUTES.contact,
     description:
-      "Translations or cultural queries with personalized, on-demand assistance.",
+      "Translations or cultural queries with personalized, real-time assistance.",
   },
 ];

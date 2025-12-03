@@ -8,5 +8,5 @@ export const Tips: string[] = [
   "Use the summarization feature for longer texts, take advantage of our app's summarization tool to get concise translations of key points.",
   "Check out our dictionary in the side menu to browse a wide collection of words and their meanings",
   "Explore multiple translation options provided by the app to find the most suitable one for your context.",
-  "Provide feedback on translations, Report inaccuracies or suggest improvements, helping us to enhance the service for all users.",
+  "Provide feedback on translations, report inaccuracies, or suggest improvements to help us enhance the service for all users.",
 ];

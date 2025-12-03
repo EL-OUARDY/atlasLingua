@@ -87,7 +87,7 @@ function Favorites({ fetchLimit = 30 }: { fetchLimit?: number }) {
   }
 
   return (
-    <div className="flex h-full flex-col p-4 shadow-sm sm:p-6 md:rounded-lg md:border md:border-dashed">
+    <div className="flex h-full flex-col bg-muted/40 p-4 shadow-sm sm:p-6 md:rounded-lg md:border">
       <div className="flex flex-col gap-4 md:flex-row md:items-end">
         <div>
           <h2 className="text-2xl font-bold tracking-tight">Favorites</h2>

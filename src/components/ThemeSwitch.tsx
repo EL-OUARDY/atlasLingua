@@ -8,11 +8,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuCheckboxItem,
 } from "./ui/dropdown-menu";
-import { useTheme } from "@/contexts/ThemeContext";
+import { useAppSettings } from "@/contexts/AppSettingsContext";
 import { useEffect, useState } from "react";
 
 function ThemeSwitch() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useAppSettings();
   const [currTheme, setCurrTheme] = useState<string>();
 
   useEffect(() => {
@@ -34,6 +34,7 @@ function ThemeSwitch() {
           variant="outline"
           size="icon"
           className="overflow-hidden md:rounded-full"
+          title="Change theme"
         >
           {currTheme === "light" && (
             <Sun className="size-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />

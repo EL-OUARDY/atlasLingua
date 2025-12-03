@@ -197,6 +197,7 @@ function Filter({
           variant={"outline"}
           size={"icon"}
           className="hover:bg-background focus:bg-background md:text-muted-foreground"
+          title="Community"
         >
           <Link to={ROUTES.communityStartPage}>
             <InfoIcon className="size-4 md:size-5" />
@@ -240,6 +241,7 @@ function Filter({
             variant={"outline"}
             size={"icon"}
             className="hover:bg-background focus:bg-background md:hidden"
+            title="Search"
           >
             <Search className="size-4 md:size-5" />
           </Button>
@@ -256,6 +258,7 @@ function Filter({
             variant={"outline"}
             size={"icon"}
             className="lg:hidden"
+            title="Close"
           >
             <X className="size-4 md:size-5" />
           </Button>
@@ -272,6 +275,7 @@ function Filter({
             variant={"outline"}
             size={"icon"}
             className="lg:hidden"
+            title="Create new post"
           >
             <SquarePen className="size-4 md:size-5" />
           </Button>
@@ -282,6 +286,7 @@ function Filter({
             variant={"outline"}
             size={"icon"}
             className="lg:hidden"
+            title="Close"
           >
             <X className="size-4 md:size-5" />
           </Button>

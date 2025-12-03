@@ -1,38 +1,45 @@
+import { BeforeInstallPromptEvent } from "@/components/InstallPWAListner";
 import { createContext, useContext, useEffect, useState } from "react";
 
 export type Theme = "dark" | "light" | "system";
 export type Font = "geist" | "system";
 
-type ThemeProviderProps = {
+type AppSettingsProviderProps = {
   children: React.ReactNode;
   defaultTheme?: Theme;
   defaultFont?: Font;
   storageKey?: string;
 };
 
-type ThemeProviderState = {
+type AppSettingsState = {
   theme: Theme;
-  font: Font;
   setTheme: (theme: Theme) => void;
+  font: Font;
   setFont: (font: Font) => void;
+
+  installdeferredPrompt: BeforeInstallPromptEvent | null;
+  setInstallDeferredPrompt: (e: BeforeInstallPromptEvent | null) => void;
 };
 
-const initialState: ThemeProviderState = {
+const initialState: AppSettingsState = {
   theme: "system",
-  font: "geist",
   setTheme: () => null,
+  font: "geist",
   setFont: () => null,
+  installdeferredPrompt: null,
+  setInstallDeferredPrompt: () => null,
 };
 
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
+const AppSettingsProviderContext =
+  createContext<AppSettingsState>(initialState);
 
-export function ThemeProvider({
+export function AppSettingsProvider({
   children,
   defaultTheme = "system",
   defaultFont = "geist",
   storageKey = "APP_THEME",
   ...props
-}: ThemeProviderProps) {
+}: AppSettingsProviderProps) {
   const [theme, setTheme] = useState<Theme>(
     () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
   );
@@ -40,6 +47,9 @@ export function ThemeProvider({
   const [font, setFont] = useState<Font>(
     () => (localStorage.getItem(storageKey + "-font") as Font) || defaultFont,
   );
+
+  const [installdeferredPrompt, setInstallDeferredPrompt] =
+    useState<BeforeInstallPromptEvent | null>(null);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -82,20 +92,22 @@ export function ThemeProvider({
       localStorage.setItem(storageKey + "-font", font);
       setFont(font);
     },
+    installdeferredPrompt,
+    setInstallDeferredPrompt,
   };
 
   return (
-    <ThemeProviderContext.Provider {...props} value={value}>
+    <AppSettingsProviderContext.Provider {...props} value={value}>
       {children}
-    </ThemeProviderContext.Provider>
+    </AppSettingsProviderContext.Provider>
   );
 }
 
-export const useTheme = () => {
-  const context = useContext(ThemeProviderContext);
+export const useAppSettings = () => {
+  const context = useContext(AppSettingsProviderContext);
 
   if (context === undefined)
-    throw new Error("useTheme must be used within a ThemeProvider");
+    throw new Error("useAppSettings must be used within a AppSettingsProvider");
 
   return context;
 };

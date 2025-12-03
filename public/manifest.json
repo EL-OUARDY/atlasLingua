@@ -1,0 +1,71 @@
+{
+  "id": "/",
+  "lang": "en-US",
+  "name": "AtlasLingua — English-Darija Translator",
+  "short_name": "AtlasLingua",
+  "description": "Our app offers AI-powered translations, a rich vocabulary dictionary from English to Darija, and plenty of helpful learning materials.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "sizes": "114x114",
+      "src": "/img/icons/icon-114x114.png"
+    },
+    {
+      "sizes": "120x120",
+      "src": "/img/icons/icon-120x120.png"
+    },
+    {
+      "sizes": "144x144",
+      "src": "/img/icons/icon-144x144.png"
+    },
+    {
+      "sizes": "152x152",
+      "src": "/img/icons/icon-152x152.png"
+    },
+    {
+      "sizes": "180x180",
+      "src": "/img/icons/icon-180x180.png"
+    },
+    {
+      "sizes": "57x57",
+      "src": "/img/icons/icon-57x57.png"
+    },
+    {
+      "sizes": "60x60",
+      "src": "/img/icons/icon-60x60.png"
+    },
+    {
+      "sizes": "72x72",
+      "src": "/img/icons/icon-72x72.png"
+    },
+    {
+      "sizes": "76x76",
+      "src": "/img/icons/icon-76x76.png"
+    },
+    {
+      "src": "/img/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/img/screenshots/desktop.png",
+      "sizes": "2560x1440",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/img/screenshots/mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    }
+  ]
+}

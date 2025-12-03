@@ -2,39 +2,44 @@ import { ROUTES } from "@/routes/routes";
 import { PenLine, BookOpenIcon, RulerIcon, UsersRoundIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { Separator } from "../ui/separator";
 
 interface Props {
   isPage?: boolean;
+  className?: string;
 }
-function CommunityFrontPage({ isPage = false }: Props) {
+function CommunityFrontPage({ isPage = false, className }: Props) {
   return (
     <div
       className={cn(
-        "flex size-full text-center",
-        isPage && "mb-4 max-w-2xl p-4",
+        "community-welcome flex h-full border bg-muted/40 px-4 py-8 md:rounded-lg",
+        isPage && "mb-4 max-w-3xl",
+        className,
       )}
     >
-      <div className="flex flex-col gap-6 rounded-lg text-center">
-        <div className="w-full overflow-hidden rounded-lg bg-background p-4">
-          <h2 className="mb-2 text-xl font-bold text-primary">
-            Welcome to our Forum
-          </h2>
-
-          <p className="text-gray-400">
-            Join our supportive community of language learners! Share your
-            questions, experiences, and help others along the way.
-          </p>
+      <div className="flex flex-col gap-4 rounded-lg">
+        <div className="">
+          <div className="w-full p-4 sm:p-0">
+            <h2 className="text-2xl font-bold tracking-tight">
+              Welcome to our Forum
+            </h2>
+            <p className="mt-1 text-muted-foreground">
+              Join our supportive community of language learners! Share your
+              questions, experiences, and help others along the way.
+            </p>
+          </div>
+          <Separator className="mb-2 mt-6 hidden sm:block" />
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid-cols-auto-fill-350 grid gap-4">
           <Link
             to={ROUTES.community + "?new_post=true"}
             className="flex items-start overflow-hidden rounded-lg bg-background p-4"
           >
-            <PenLine className="mr-3 h-6 w-6 flex-shrink-0 text-purple-500" />
+            <PenLine className="mr-3 h-6 w-6 flex-shrink-0 text-sky-500" />
             <div className="text-left">
               <h3 className="mb-2 font-semibold text-primary">Ask Questions</h3>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Stuck on a difficult phrase? Need help with vocabulary or
                 pronunciation? Our supportive community is ready to assist you
                 with any language challenge.
@@ -43,12 +48,12 @@ function CommunityFrontPage({ isPage = false }: Props) {
           </Link>
 
           <div className="flex items-start overflow-hidden rounded-lg bg-background p-4">
-            <UsersRoundIcon className="mr-3 h-6 w-6 flex-shrink-0 text-purple-500" />
+            <UsersRoundIcon className="mr-3 h-6 w-6 flex-shrink-0 text-sky-500" />
             <div className="text-left">
               <h3 className="mb-2 font-semibold text-primary">
                 Practice with Others
               </h3>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Looking for someone to practice language with? Connect with
                 other learners and start improving together.
               </p>
@@ -56,12 +61,12 @@ function CommunityFrontPage({ isPage = false }: Props) {
           </div>
 
           <div className="flex items-start overflow-hidden rounded-lg bg-background p-4">
-            <BookOpenIcon className="mr-3 h-6 w-6 flex-shrink-0 text-purple-500" />
+            <BookOpenIcon className="mr-3 h-6 w-6 flex-shrink-0 text-sky-500" />
             <div className="text-left">
               <h3 className="mb-2 font-semibold text-primary">
                 Share Knowledge
               </h3>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Discuss learning techniques, share resources, or help others
                 understand tricky concepts.
               </p>
@@ -69,12 +74,12 @@ function CommunityFrontPage({ isPage = false }: Props) {
           </div>
 
           <div className="flex items-start overflow-hidden rounded-lg bg-background p-4">
-            <RulerIcon className="mr-3 h-6 w-6 flex-shrink-0 text-purple-500" />
+            <RulerIcon className="mr-3 h-6 w-6 flex-shrink-0 text-sky-500" />
             <div className="text-left">
               <h3 className="mb-2 font-semibold text-primary">
                 Forum Guidelines
               </h3>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 We encourage respectful and supportive interactions. Keep
                 discussions on topic and use appropriate language. Remember,
                 we're all here to help each other learn and grow in our language
@@ -84,12 +89,12 @@ function CommunityFrontPage({ isPage = false }: Props) {
           </div>
         </div>
 
-        <div className="flex w-full justify-center overflow-hidden">
+        <div className="flex w-full overflow-hidden">
           <Link
             to={ROUTES.community + "?new_post=true"}
             className={cn(
-              "max-w-fit rounded-md bg-purple-600 px-4 py-2 text-sm text-white hover:bg-purple-700",
-              !isPage && "lg:hidden",
+              "max-w-fit rounded-md bg-sky-600 px-4 py-2 text-sm text-white hover:bg-sky-700",
+              !isPage && "mx-auto md:mx-0 xl:hidden",
             )}
           >
             Create New Post

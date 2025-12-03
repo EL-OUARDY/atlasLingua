@@ -127,6 +127,7 @@ function ResetPassword() {
                       type="button"
                       onClick={() => setPasswordVisible(!passwordVisible)}
                       className="absolute right-2 top-0 h-10 text-xl"
+                      title="Toggle password"
                     >
                       {passwordVisible ? (
                         <EyeOff className="size-4" />

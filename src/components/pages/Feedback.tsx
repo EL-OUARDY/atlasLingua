@@ -86,7 +86,7 @@ function Feedback() {
   }
 
   return (
-    <div className="flex h-full flex-1 flex-col items-center justify-start shadow-sm sm:p-6 md:rounded-lg md:border md:border-dashed">
+    <div className="flex h-full flex-1 flex-col items-center justify-start bg-muted/40 shadow-sm sm:p-6 md:rounded-lg md:border">
       <div className="w-full p-4 sm:p-0">
         <h2 className="text-2xl font-bold tracking-tight">Feedback</h2>
         <p className="mt-1 text-muted-foreground">
@@ -149,10 +149,10 @@ function Feedback() {
                   )}
                 </div>
               </CardContent>
-              <CardFooter className="justify-between space-x-2">
+              <CardFooter className="justify-end space-x-2">
                 <Button
                   type="button"
-                  variant="outline"
+                  variant="ghost"
                   onClick={(e) => {
                     e.preventDefault();
                     reset();
@@ -160,7 +160,7 @@ function Feedback() {
                 >
                   Clear
                 </Button>
-                <Button disabled={isSubmitting} type="submit">
+                <Button disabled={isSubmitting} type="submit" className="px-8">
                   {isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please
@@ -178,7 +178,7 @@ function Feedback() {
           <div className="flex h-full w-full select-none flex-col justify-center rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
             <Logo className="size-5" />
             <div className="mb-2 mt-4 text-lg font-medium">{APP_NAME}</div>
-            <p className="leading-tight text-muted-foreground">
+            <p className="text-muted-foreground">
               Feedback is vital to the growth and improvement of our translator.
               Your insights help us refine our translations, enhance user
               experience, and add features that matter most to you. As language

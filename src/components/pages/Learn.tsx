@@ -119,7 +119,7 @@ function Learn() {
   }
 
   return (
-    <div className="flex h-full flex-col p-4 shadow-sm sm:p-6 md:rounded-lg md:border md:border-dashed">
+    <div className="flex h-full flex-col bg-muted/40 p-4 shadow-sm sm:p-6 md:rounded-lg md:border">
       <div className="flex flex-col gap-4 md:flex-row md:items-end">
         <div>
           <h2 className="text-2xl font-bold tracking-tight">Learn</h2>
@@ -145,7 +145,7 @@ function Learn() {
           onChange={(link) => setSelectedCategory(link)}
           links={CATEGORIES}
           selected={selectedCategory}
-          className="hidden h-fit flex-row gap-4 sm:flex"
+          className="hidden h-fit flex-row gap-4 text-sm sm:flex"
         />
 
         <div className="mt-4 w-full sm:hidden">

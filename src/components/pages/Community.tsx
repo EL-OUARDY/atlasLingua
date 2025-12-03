@@ -16,6 +16,8 @@ import { CommunityProvider } from "@/contexts/CommunityContext";
 import SearchList from "../community/SearchList";
 import { InstantSearch } from "react-instantsearch";
 import { algoliasearch } from "algoliasearch";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { ScrollArea } from "../ui/scroll-area";
 
 // Initialize the Algolia search client
 const searchClient = algoliasearch(
@@ -33,6 +35,10 @@ function Community() {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const panelGroupRef = useRef<ImperativePanelGroupHandle>(null);
+
+  const [height, setHeight] = useState<number>(0);
+
+  const isMobile = useIsMobile(1440);
 
   useEffect(() => {
     // Get search query from URL
@@ -74,16 +80,16 @@ function Community() {
     // set panels size
     function resizeContentPanel() {
       const wd = window.innerWidth;
-      // on larger screens: expand post panel if it is smaller
-      if (panelGroupRef.current && wd > breakpoints.lg)
+      // on larger screens: expand post panel
+      if (panelGroupRef.current && wd > breakpoints.xl)
         if (
           panelGroupRef.current.getLayout()[0] === 0 ||
           panelGroupRef.current.getLayout()[1] < 5
         )
           setPanelsLayout([70, 30]);
 
-      // on smaller screens: only show one panel
-      if (wd < breakpoints.lg)
+      // on smaller screens: show one panel
+      if (wd < breakpoints.xl)
         if (selectedPost || newPost || editPost) setPanelsLayout([0, 100]);
         else setPanelsLayout([100, 0]);
     }
@@ -128,9 +134,22 @@ function Community() {
     });
   }
 
+  useEffect(() => {
+    const updateHeight = () => {
+      const postsContainer: HTMLDivElement | null =
+        document.querySelector(".posts-container");
+
+      if (!postsContainer) return;
+
+      const containerH = postsContainer.offsetHeight;
+      setHeight(containerH);
+    };
+    updateHeight(); // initial run
+  }, []);
+
   return (
     <CommunityProvider>
-      <div className="flex h-full flex-col overflow-auto p-4 shadow-sm sm:p-6 md:rounded-lg md:border md:border-dashed">
+      <div className="flex h-full flex-col overflow-auto bg-muted/40 p-4 shadow-sm sm:p-6 md:rounded-lg md:border">
         <Filter
           isSearchVisible={isSearchVisible}
           setIsSearchVisible={setIsSearchVisible}
@@ -154,45 +173,59 @@ function Community() {
           direction="horizontal"
           className="mt-6 flex w-full flex-1 overflow-auto rounded-lg data-[panel-group-direction=vertical]:flex-col"
         >
-          <ResizablePanel defaultSize={100}>
-            <div className="relative flex h-full flex-col">
-              {searchQuery ? (
-                // Algolia search
-                <InstantSearch
-                  searchClient={searchClient}
-                  indexName="posts"
-                  future={{ preserveSharedStateOnUnmount: true }}
-                >
-                  <SearchList
+          <ResizablePanel
+            defaultSize={isMobile ? 100 : 70}
+            minSize={isMobile ? undefined : 50}
+          >
+            <div className="posts-container h-full overflow-hidden">
+              <ScrollArea
+                key={height}
+                style={{ maxHeight: height }}
+                className="relative flex h-full flex-col"
+              >
+                {searchQuery ? (
+                  // Algolia search
+                  <InstantSearch
+                    searchClient={searchClient}
+                    indexName="posts"
+                    future={{ preserveSharedStateOnUnmount: true }}
+                  >
+                    <SearchList
+                      onPostSelected={showPostPanel}
+                      selectedPostId={selectedPostId || postToEdit}
+                      onEdit={showEditPostForm}
+                    />
+                  </InstantSearch>
+                ) : (
+                  <PostsList
                     onPostSelected={showPostPanel}
                     selectedPostId={selectedPostId || postToEdit}
                     onEdit={showEditPostForm}
                   />
-                </InstantSearch>
-              ) : (
-                <PostsList
-                  onPostSelected={showPostPanel}
-                  selectedPostId={selectedPostId || postToEdit}
-                  onEdit={showEditPostForm}
-                />
-              )}
+                )}
 
-              {selectedPostId && (
-                <div className="absolute bottom-4 right-4 hidden md:flex">
-                  <WTooltip side="top" content="New post">
-                    <span
-                      onClick={showNewPostForm}
-                      className={`${buttonVariants({ variant: "outline", size: "icon" })} flex !size-12 cursor-pointer items-center justify-center !rounded-full shadow-lg`}
-                    >
-                      <SquarePen className="size-4 text-muted-foreground hover:text-primary md:size-5" />
-                    </span>
-                  </WTooltip>
-                </div>
-              )}
+                {selectedPostId && (
+                  <div className="absolute bottom-4 right-4 hidden md:flex">
+                    <WTooltip side="top" content="New post">
+                      <span
+                        onClick={showNewPostForm}
+                        className={`${buttonVariants({ variant: "outline", size: "icon" })} flex !size-12 cursor-pointer items-center justify-center !rounded-full shadow-lg`}
+                      >
+                        <SquarePen className="size-4 text-muted-foreground hover:text-primary md:size-5" />
+                      </span>
+                    </WTooltip>
+                  </div>
+                )}
+              </ScrollArea>
             </div>
           </ResizablePanel>
-          <ResizableHandle withHandle className="mx-4 hidden lg:flex" />
-          <ResizablePanel defaultSize={0}>
+
+          <ResizableHandle withHandle className="mx-4 hidden xl:flex" />
+
+          <ResizablePanel
+            defaultSize={isMobile ? 0 : 30}
+            minSize={isMobile ? undefined : 30}
+          >
             <div className="flex h-full items-center justify-center">
               {selectedPostId ? (
                 <SinglePost postId={selectedPostId} onEdit={showEditPostForm} />

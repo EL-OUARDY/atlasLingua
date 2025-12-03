@@ -18,7 +18,7 @@ import {
   SelectGroup,
   SelectItem,
 } from "@/components/ui/select";
-import { useTheme, Theme, Font } from "@/contexts/ThemeContext";
+import { useAppSettings, Theme, Font } from "@/contexts/AppSettingsContext";
 
 interface AppearanceFormValues {
   theme: Theme;
@@ -26,7 +26,7 @@ interface AppearanceFormValues {
 }
 
 function AppearanceSettings() {
-  const { theme, font, setTheme, setFont } = useTheme();
+  const { theme, font, setTheme, setFont } = useAppSettings();
   const defaultValues: Partial<AppearanceFormValues> = {
     theme: theme,
     font: font,

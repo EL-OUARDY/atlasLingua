@@ -109,6 +109,7 @@ function FavoriteCard({ favorite, className, removeFavorite }: Props) {
                 setIsCopied(true);
                 setTimeout(() => setIsCopied(false), 2000);
               }}
+              title="Copy"
             >
               {!isCopied ? (
                 <Copy className="size-4 cursor-pointer" />
@@ -128,6 +129,7 @@ function FavoriteCard({ favorite, className, removeFavorite }: Props) {
                     variant="ghost"
                     size={"icon"}
                     className="border border-muted text-muted-foreground hover:text-foreground"
+                    title="Star"
                   >
                     <StarOffIcon className="size-4 cursor-pointer" />
                   </Button>
@@ -144,6 +146,7 @@ function FavoriteCard({ favorite, className, removeFavorite }: Props) {
                   onClick={() => {
                     setFavoriteDialogOpen(true);
                   }}
+                  title="Expand"
                 >
                   <ExpandIcon className="size-4 cursor-pointer" />
                 </Button>
@@ -235,7 +238,7 @@ function FavoriteCard({ favorite, className, removeFavorite }: Props) {
               </Accordion>
             </div>
             <DialogFooter>
-              {/* <Button type="submit">Hide</Button> */}
+              {/* <Button type="submit" title="Hide">Hide</Button> */}
             </DialogFooter>
           </DialogContent>
         </Dialog>

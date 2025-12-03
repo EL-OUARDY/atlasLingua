@@ -30,11 +30,12 @@ module.exports = {
         sans: ["Geist", ...defaultTheme.fontFamily.sans],
       },
       gridTemplateColumns: {
-        'auto-fill-270': 'repeat(auto-fill, minmax(270px, 1fr))',
+        "auto-fill-270": "repeat(auto-fill, minmax(270px, 1fr))",
+        "auto-fill-350": "repeat(auto-fill, minmax(350px, 1fr))",
       },
       transitionDuration: {
-        '2000': '2000ms',
-        '3000': '3000ms',
+        2000: "2000ms",
+        3000: "3000ms",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -70,6 +71,16 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        sidebar: {
+          DEFAULT: "hsl(var(--sidebar-background))",
+          foreground: "hsl(var(--sidebar-foreground))",
+          primary: "hsl(var(--sidebar-primary))",
+          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+          accent: "hsl(var(--sidebar-accent))",
+          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+          border: "hsl(var(--sidebar-border))",
+          ring: "hsl(var(--sidebar-ring))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -78,12 +89,20 @@ module.exports = {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
         },
       },
       animation: {
@@ -92,23 +111,24 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"),
-  // create a plugin that adds utilities!
-  function ({ addUtilities }) {
-    const newUtilities = {
-      // capitalize the first letter of the first word
-      '.first-word-cap:first-letter': {
-        textTransform: 'uppercase',
-      },
-      // remove tailwind ring
-      '.no-ring': {
-        '@apply !ring-0 !ring-offset-0': {}
-      }
-    }
+  plugins: [
+    require("tailwindcss-animate"),
+    // create a plugin that adds utilities!
+    function ({ addUtilities }) {
+      const newUtilities = {
+        // capitalize the first letter of the first word
+        ".first-word-cap:first-letter": {
+          textTransform: "uppercase",
+        },
+        // remove tailwind ring
+        ".no-ring": {
+          "@apply !ring-0 !ring-offset-0": {},
+        },
+      };
 
-    addUtilities(newUtilities, {
-      variants: ['responsive', 'hover'],
-    });
-  }
+      addUtilities(newUtilities, {
+        variants: ["responsive", "hover"],
+      });
+    },
   ],
 };

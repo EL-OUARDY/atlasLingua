@@ -1,16 +1,5 @@
-import {
-  APP_EMAIL,
-  APP_GITHUB,
-  APP_NAME,
-  APP_TWITTER,
-} from "@/shared/constants";
-import {
-  GithubIcon,
-  Loader2,
-  MailIcon,
-  TerminalIcon,
-  TwitterIcon,
-} from "lucide-react";
+import { APP_EMAIL, APP_GITHUB, APP_NAME } from "@/shared/constants";
+import { GithubIcon, Loader2, MailIcon, TerminalIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -103,39 +92,46 @@ function Contribution() {
 
   return (
     <>
-      <div className="flex h-full flex-1 flex-col items-center justify-start shadow-sm">
-        <div className="grid h-full w-full flex-1 gap-8 rounded-lg p-4 sm:p-6 md:gap-4 md:bg-background xl:grid-cols-[1fr_1fr]">
+      <div className="flex h-full flex-1 flex-col items-center justify-start bg-muted/40 shadow-sm md:rounded-xl md:border">
+        <div className="grid h-full w-full flex-1 gap-8 rounded-lg p-4 sm:p-6 md:gap-4 xl:grid-cols-[1fr_1fr]">
           <div className="h-full">
-            <div className="flex h-full w-full select-none flex-col justify-center rounded-md bg-gradient-to-b from-background/50 to-background p-6 no-underline outline-none focus:shadow-md dark:from-muted/50 dark:to-muted md:from-muted/50 md:to-muted">
-              <Logo className="size-5" />
-              <div className="mb-2 mt-4 text-lg font-medium">{APP_NAME}</div>
-              <p className="leading-tight text-muted-foreground">
-                Contributions are crucial to the success and growth of our
-                translator. Whether you're offering translations, datasets,
-                feature ideas, or other valuable input, your efforts help
-                enhance our tool for everyone. <br /> We welcome contributions
-                in various forms, including documents and spreadsheets. <br />
-                To ensure quality and consistency, please read our{" "}
-                <Link
-                  className="text-secondary-foreground hover:underline"
-                  to={ROUTES.contributionGuidelines}
-                >
-                  Contribution Guide
-                </Link>{" "}
-                before submitting. Every contribution must align with our
-                guidelines to be considered. Together, we can create a more
-                comprehensive and accurate translation resource.
-              </p>
+            <div className="flex h-full w-full select-none flex-col justify-between gap-4 rounded-md border bg-gradient-to-b from-background/50 to-background p-6 no-underline outline-none focus:shadow-md dark:from-muted/50 dark:to-muted md:from-background/50 md:to-background">
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <Logo className="size-5" />
+                  <div className="mt-4 text-xl font-medium">{APP_NAME}</div>
+                  <p className="text-muted-foreground">
+                    Atlaslingua improves because of community input. Every
+                    contribution—whether a translation, a new word, or a feature
+                    idea—directly helps everyone learn Darija better.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h3 className="text-lg">Want to contribute?</h3>
+                  <p className="text-muted-foreground">
+                    Please complete the form to share your contribution. To keep
+                    Atlaslingua accurate for everyone, we ask that you quickly
+                    check our{" "}
+                    <Link
+                      className="text-secondary-foreground hover:underline"
+                      to={ROUTES.contributionGuidelines}
+                    >
+                      Contribution Guide
+                    </Link>{" "}
+                    before submitting.
+                  </p>
+                </div>
+              </div>
               <Card className="mt-4">
-                <CardHeader>
-                  <div className="space-y-1">
+                <CardHeader className="pb-2">
+                  <div className="space-y-2">
                     <CardTitle>
                       <div className="flex items-center gap-1">
                         <TerminalIcon className="size-5" />
-                        <p className="text-base">Developers</p>
+                        <p className="text-base">For Developers</p>
                       </div>
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="leading-relaxed">
                       This project is open source, and we welcome your
                       contributions! Feel free to reach out for more information
                       on how to get started.
@@ -143,28 +139,20 @@ function Contribution() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex space-x-4 text-sm text-muted-foreground">
+                  <div className="flex space-x-4 text-muted-foreground">
                     <a
                       href={APP_GITHUB}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center hover:text-sky-400"
+                      className="flex items-center gap-1 hover:text-sky-400"
                     >
                       <GithubIcon className="mr-1 size-4 text-sky-400" />
                       Github
                     </a>
-                    <a
-                      href={APP_TWITTER}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center hover:text-sky-400"
-                    >
-                      <TwitterIcon className="mr-1 size-4 text-sky-400" />
-                      Twitter
-                    </a>
+
                     <a
                       href={`mailto:${APP_EMAIL}`}
-                      className="flex items-center hover:text-sky-400"
+                      className="flex items-center gap-1 hover:text-sky-400"
                     >
                       <MailIcon className="mr-1 size-4 text-sky-400" />
                       Contact
@@ -253,10 +241,10 @@ function Contribution() {
                     </p>
                   </div>
                 </CardContent>
-                <CardFooter className="justify-between space-x-2">
+                <CardFooter className="justify-end space-x-2">
                   <Button
                     type="button"
-                    variant="outline"
+                    variant="ghost"
                     onClick={(e) => {
                       e.preventDefault();
                       reset();
@@ -264,7 +252,11 @@ function Contribution() {
                   >
                     Clear
                   </Button>
-                  <Button disabled={isSubmitting} type="submit">
+                  <Button
+                    disabled={isSubmitting}
+                    type="submit"
+                    className="px-8"
+                  >
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please

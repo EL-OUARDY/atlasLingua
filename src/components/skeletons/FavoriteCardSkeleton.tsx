@@ -35,15 +35,25 @@ function FavoriteCardSkeleton() {
       </CardHeader>
       <CardContent className="border-t px-4 py-2">
         <div className="flex w-full items-center gap-2">
-          <Button variant="ghost" size={"icon"} className="border border-muted">
+          <Button
+            title=""
+            variant="ghost"
+            size={"icon"}
+            className="border border-muted"
+          >
             <Skeleton className="size-4 rounded-sm" />
           </Button>
-          <Button variant="ghost" size={"icon"} className="border border-muted">
+          <Button
+            title=""
+            variant="ghost"
+            size={"icon"}
+            className="border border-muted"
+          >
             <Skeleton className="size-4 rounded-sm" />
           </Button>
 
           <div className="ml-auto">
-            <Button variant="ghost" className="border border-muted">
+            <Button title="" variant="ghost" className="border border-muted">
               <Skeleton className="size-4 rounded-sm" />
             </Button>
           </div>

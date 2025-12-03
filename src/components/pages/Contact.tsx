@@ -79,7 +79,7 @@ function Contact() {
     <AuthLayout description={description}>
       <Card className="mx-auto w-full border-none md:w-[450px]">
         <CardHeader className="text-center">
-          <CardTitle>Contact Us</CardTitle>
+          <CardTitle className="mb-2">Contact Us</CardTitle>
           <CardDescription>
             Send us a message and we'll respond as quickly as possible.
           </CardDescription>
@@ -157,10 +157,10 @@ function Contact() {
                 )}
               </div>
             </CardContent>
-            <CardFooter className="justify-between space-x-2">
+            <CardFooter className="justify-end space-x-2">
               <Button
                 type="button"
-                variant="outline"
+                variant="ghost"
                 onClick={(e) => {
                   e.preventDefault();
                   reset();
@@ -168,7 +168,7 @@ function Contact() {
               >
                 Clear
               </Button>
-              <Button disabled={isSubmitting} type="submit">
+              <Button disabled={isSubmitting} type="submit" className="px-8">
                 {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please

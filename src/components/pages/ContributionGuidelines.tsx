@@ -2,13 +2,12 @@ import { ROUTES } from "@/routes/routes";
 import { APP_NAME } from "@/shared/constants";
 import { Link } from "react-router-dom";
 
-function Privacy() {
-  <p className="text-base text-muted-foreground"></p>;
+function ContributionGuidelines() {
   return (
     <>
       <div
         id="contribution-guidelines"
-        className="flex-1 p-4 shadow-sm sm:p-6 md:rounded-lg md:border md:border-dashed"
+        className="max-w-3xl flex-1 border bg-muted/40 p-4 shadow-sm sm:p-6 md:rounded-lg"
       >
         <div className="mb-2 flex flex-col">
           <h3 className="text-2xl font-bold tracking-tight">
@@ -18,7 +17,7 @@ function Privacy() {
             Last updated: November 6, 2024
           </span>
         </div>
-        <p className="text-base text-muted-foreground">
+        <p className="text-base dark:text-muted-foreground">
           Welcome to "<span className="text-foreground">{APP_NAME}</span>" app.
           To ensure quality and consistency, every contribution must align with
           our guidelines to be considered. Together, we can create a more
@@ -28,7 +27,7 @@ function Privacy() {
         <h3 className="mb-2 mt-4 text-xl font-bold tracking-tight">
           1- Submitting Contributions
         </h3>
-        <p className="text-base text-muted-foreground">
+        <p className="text-base dark:text-muted-foreground">
           We welcome contributions in various data file formats. You may send
           translations in CSV, XLS, JSON, or plain text files—whatever works
           best for you. Just ensure that each file includes English phrases
@@ -37,7 +36,7 @@ function Privacy() {
         <h3 className="mb-2 mt-4 text-xl font-bold tracking-tight">
           2- Translation Standards
         </h3>
-        <p className="text-base text-muted-foreground">
+        <p className="text-base dark:text-muted-foreground">
           To maintain consistency, we ask that all contributors follow these
           standards for representing Darija
         </p>
@@ -112,7 +111,7 @@ function Privacy() {
           <h4 className="text-base font-bold">
             Avoid Adding “e” at the End of Words:
           </h4>
-          <p className="text-base text-muted-foreground">
+          <p className="text-base dark:text-muted-foreground">
             Typically, Darija words do not end with the letter “e.” For
             instance, write "louz" instead of "louze" to keep translations as
             close to the spoken form as possible.
@@ -120,7 +119,7 @@ function Privacy() {
           <h4 className="text-base font-bold">
             Avoid "Z" and "th" for ظ, ذ, ث:
           </h4>
-          <p className="text-base text-muted-foreground">
+          <p className="text-base dark:text-muted-foreground">
             These characters are generally not used in standard Darija, except
             in some northern dialects. For simplicity, please use the closest
             standard sounds for clarity:
@@ -146,7 +145,7 @@ function Privacy() {
         <h3 className="mb-2 mt-4 text-xl font-bold tracking-tight">
           Contact Us
         </h3>
-        <p className="text-base text-muted-foreground">
+        <p className="text-base dark:text-muted-foreground">
           If you have any questions or concerns, please{" "}
           <Link className="underline hover:text-foreground" to={ROUTES.contact}>
             contact us
@@ -157,4 +156,4 @@ function Privacy() {
   );
 }
 
-export default Privacy;
+export default ContributionGuidelines;

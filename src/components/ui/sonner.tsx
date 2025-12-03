@@ -1,10 +1,10 @@
-import { useTheme } from "@/contexts/ThemeContext";
+import { useAppSettings } from "@/contexts/AppSettingsContext";
 import { Toaster as Sonner } from "sonner";
 
 type ToasterProps = React.ComponentProps<typeof Sonner>;
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme();
+  const { theme = "system" } = useAppSettings();
 
   return (
     <Sonner

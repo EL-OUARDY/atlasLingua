@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Configure, useInfiniteHits } from "react-instantsearch";
-import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import ConfirmationDialog from "../ConfirmationDialog";
 import { useCommunity } from "@/contexts/CommunityContext";
 import { useEffect, useState } from "react";
@@ -44,7 +43,7 @@ export default function SearchList({
   }, [selectedPostId]);
 
   return (
-    <ScrollArea className="h-full w-full text-center">
+    <div className="h-full flex-1">
       <Configure query={filter.searchQuery} hitsPerPage={30} />
 
       {posts.length === 0 && (
@@ -96,7 +95,6 @@ export default function SearchList({
         onAbort={() => setPostToDelete(null)}
         isOpen={!!postToDelete}
       />
-      <ScrollBar orientation="horizontal" className="cursor-grab" />
-    </ScrollArea>
+    </div>
   );
 }

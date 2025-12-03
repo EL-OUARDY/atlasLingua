@@ -243,6 +243,7 @@ function ProfileSettings() {
                                 onClick={() =>
                                   setIsPasswordShown(!isPasswordShown)
                                 }
+                                title="Toggle password"
                               >
                                 {isPasswordShown ? (
                                   <EyeOffIcon className="size-4 text-muted-foreground" />
