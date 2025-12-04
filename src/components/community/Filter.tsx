@@ -84,30 +84,10 @@ function Filter({
         >
           <div className="flex items-center">
             <TabsList className="">
-              <TabsTrigger
-                value="latest"
-                className="text-zinc-600 dark:text-zinc-200"
-              >
-                Latest
-              </TabsTrigger>
-              <TabsTrigger
-                value="popular"
-                className="text-zinc-600 dark:text-zinc-200"
-              >
-                Popular
-              </TabsTrigger>
-              <TabsTrigger
-                value="unanswered"
-                className="text-zinc-600 dark:text-zinc-200"
-              >
-                Unanswered
-              </TabsTrigger>
-              <TabsTrigger
-                value="user"
-                className="text-zinc-600 dark:text-zinc-200"
-              >
-                My Posts
-              </TabsTrigger>
+              <TabsTrigger value="latest">Latest</TabsTrigger>
+              <TabsTrigger value="popular">Popular</TabsTrigger>
+              <TabsTrigger value="unanswered">Unanswered</TabsTrigger>
+              <TabsTrigger value="user">My Posts</TabsTrigger>
             </TabsList>
           </div>
         </Tabs>

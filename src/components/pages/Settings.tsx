@@ -37,7 +37,7 @@ function Settings() {
                 end
                 key={index}
                 to={link.href}
-                className="flex h-10 items-center whitespace-nowrap rounded-md bg-background px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-accent-foreground focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="flex h-10 items-center whitespace-nowrap rounded-md bg-background px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-accent-foreground focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
               >
                 {link.title}
               </NavLink>

@@ -56,7 +56,7 @@ function Translator() {
       <div className="flex items-center gap-4">
         <Tabs className="flex flex-1 flex-col gap-4" value={activeTab}>
           <div className="flex items-center">
-            <TabsList className="mr-auto h-fit">
+            <TabsList className="mr-auto h-fit border">
               {translationTypes.map((item, index) => (
                 <TabsTrigger
                   key={index}
@@ -64,7 +64,7 @@ function Translator() {
                   onClick={() => {
                     navigate(item.link), setActiveTab(item.link);
                   }}
-                  className="rounded-lg px-4 text-zinc-600 dark:text-zinc-200"
+                  className="rounded-lg px-4"
                 >
                   <span className="flex items-center gap-3">
                     <item.icon className="size-5 xl:size-5" />
