@@ -79,7 +79,7 @@ function Summarization() {
   }
 
   return (
-    <div className="h-full gap-4 overflow-auto rounded-lg lg:w-[600px]">
+    <div className="h-full gap-4 overflow-auto rounded-lg border lg:w-[600px]">
       <div
         className={`${showOutput && "hidden"} flex h-full flex-col gap-4 rounded-lg bg-background p-4 md:p-6`}
       >
