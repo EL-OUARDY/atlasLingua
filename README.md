@@ -1,7 +1,5 @@
 # English ⇔ Darija Translator Project
 
-### “Advanced and Accurate English-Moroccan Darija Translation”
-
 `ReactJS`
 `Python`
 `TypeScript`
@@ -15,38 +13,29 @@
 ## Table of Contents
 
 - [Overview](#overview)
-- [The Problem](#the-problem)
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
-- [About me](#about)
 - [Contact](#contact-me)
 
 # Overview
 
-This project is more than just a technical demonstration – it's a tool designed to bridge communication gaps and support cultural exchange. As a Moroccan software engineer, I've poured my heart and expertise into creating a resource that will be truly useful for both visitors to Morocco and those interested in learning our unique dialect.
+This project is more than just a technical demonstration – it's a tool designed to bridge communication gaps and support cultural exchange. I've poured my heart and expertise into creating a resource that will be truly useful for both visitors to Morocco and those interested in learning our unique language.
 
 This project combines my passion for technology with a desire to contribute meaningfully to the community. It represents not just what I've learned, but also my vision for how software can solve real-world problems and bring people together.
 
-I started this as my final portfolio submission for the **ALX** Software Engineering program (**Holberton School**). But then, I decided to take it a step further and make it live for everyone to use. This project represents the culmination of my learning journey and showcases the skills I've developed throughout the course.
-
-## The Problem
-
-The project aims to address the lack of online services that provide translation assistance for English speakers learning Moroccan Darija. This problem is particularly relevant in Morocco, where many foreigners are eager to learn the local language but struggle to find reliable resources to guide them.
+I started this as my final portfolio submission for the **ALX** Software Engineering program (Holberton School). But then, I decided to take it a step further and make it live for everyone to use. This project represents the culmination of my learning journey and showcases the skills I've developed throughout the course.
 
 ## Tech Stack
 
 - **Frontend**:
-
-  - `ReactJS` with **TypeScript**.
+  - `ReactJS` with TypeScript.
   - `Tailwind CSS`
   - `Shadcn/ui`
 
 - **Backend**:
-
   - `Flask` (Python framework) for creating **APIs**.
 
 - **Database**:
-
   - `MySQL` for managing structured data.
   - `Firebase` to power the community forum.
 
@@ -60,10 +49,9 @@ The project aims to address the lack of online services that provide translation
 
 Ensure you have the following tools installed on your machine:
 
-- `Python 3.12` and `pip` (Python package manager)
-- `Node.js` (preferably v20 or later) and `npm` (Node package manager)
-- `MySQL` for structured data storage
-- `Git` for version control
+- `Python 3.12`
+- `Node.js` (preferably v20 or later)
+- `MySQL`
 
 ### 2. Setting Up the Frontend (React with TypeScript)
 
@@ -144,6 +132,5 @@ Visit http://localhost:3000 in your browser to see the frontend.
 
 ## Contact
 
-**Ouadia EL-Ouardy** \
-**Email:** contact@wadi3.codes \
-**Website:** https://wadi3.codes
+contact@wadi3.codes \
+https://wadi3.codes
