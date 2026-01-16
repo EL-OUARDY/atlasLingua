@@ -58,7 +58,7 @@ mysqlclient==2.2.4
 packaging==24.1
 proto-plus==1.25.0
 protobuf==5.29.2
-pyasn1==0.6.1
+pyasn1==0.6.2
 pyasn1_modules==0.4.1
 pycparser==2.22
 pydantic==2.8.2
